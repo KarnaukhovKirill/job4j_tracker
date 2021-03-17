@@ -6,12 +6,11 @@ public class Doctor extends Profession {
     private char gender;
 
     public Doctor() {
+        super();
     }
 
-    public Doctor(String name, String surname, String birthday, int experience, char gender) {
-        this.setName(name);
-        this.setSurname(surname);
-        this.setBirthday(birthday);
+    public Doctor(String name, String surname, String education, String birthday, int experience, char gender) {
+        super(name, surname, education, birthday);
         this.experience = experience;
         this.gender = gender;
     }

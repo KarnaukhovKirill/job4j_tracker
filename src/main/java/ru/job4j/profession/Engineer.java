@@ -6,14 +6,13 @@ public class Engineer extends Profession {
     private char gender;
 
     public Engineer() {
+        super();
     }
 
-    public Engineer(String name, String surname, char gender, String birthday, int experience) {
-        this.setName(name);
-        this.setSurname(surname);
-        this.gender = gender;
-        this.setBirthday(birthday);
+    public Engineer(int experience, char gender) {
+        super();
         this.experience = experience;
+        this.gender = gender;
     }
 
     public int getExperience() {
