@@ -5,8 +5,9 @@ import java.time.format.DateTimeFormatter;
 public class StartUI {
 
     public static void main(String[] args) {
-        Item time = new Item();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-        System.out.println(time.getCreated().format(formatter));
+        Tracker tracker = new Tracker();
+        Item first = new Item(1, "First");
+        tracker.add(first);
+        System.out.println(tracker.findById(1).getName());
     }
 }
