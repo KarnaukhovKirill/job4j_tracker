@@ -44,4 +44,19 @@ public class TrackerTest {
         tracker.delete(id);
         assertThat(tracker.findById(id), is(nullValue()));
     }
+
+    @Test
+    public void whenDeleteTwo() {
+        Tracker tracker = new Tracker();
+        Item f = new Item(1, "Google");
+        Item s = new Item(2, "Yahoo");
+        Item t = new Item(3, "Amazoon");
+        tracker.add(f);
+        tracker.add(s);
+        tracker.add(t);
+        tracker.delete(2);
+        Item[] items = tracker.findAll();
+        assertThat(items[0].getName(), is(f.getName()));  //удалили Yahoo, остались items[0] = Google, items[1] = Amazoon
+        assertThat(items[1].getName(), is(t.getName()));
+        }
 }

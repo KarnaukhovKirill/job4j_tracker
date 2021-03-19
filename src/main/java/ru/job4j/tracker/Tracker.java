@@ -26,9 +26,7 @@ public class Tracker {
     public boolean delete(int id) {
         int index = this.indexOf(id);
         if (index != -1) {
-            int startPos = index + 1;
-            int length = size - index;
-            System.arraycopy(items, startPos, items, index, length);
+            System.arraycopy(items, index + 1, items, index, size - index);
             items[size - 1] = null;
             size--;
             return true;
