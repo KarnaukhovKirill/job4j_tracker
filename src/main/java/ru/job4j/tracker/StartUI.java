@@ -19,7 +19,7 @@ public class StartUI {
                 Item[] items = tracker.findAll();
                 System.out.println("=== List of Items ====");
                 for (int i = 0; i < tracker.findAll().length; i++) {
-                    System.out.println(items[i].getName() + " " + items[i].getId());
+                    System.out.println(items[i]);
                 }
                 System.out.println("=== End ====");
             } else if (select == 2) {
@@ -29,7 +29,6 @@ public class StartUI {
                 System.out.println("Enter new name : ");
                 String name = scanner.nextLine();
                 Item newItem = new Item(id, name);
-                tracker.replace(id, newItem);
                 if (tracker.replace(id, newItem)) {
                     System.out.println("Success");
                 } else {
@@ -39,7 +38,6 @@ public class StartUI {
                 System.out.println("=== Delete Item ====");
                 System.out.println("Enter id: ");
                 int id = Integer.valueOf(scanner.nextLine());
-                tracker.delete(id);
                 if (tracker.delete(id)) {
                     System.out.println("Success");
                 } else {
@@ -51,7 +49,7 @@ public class StartUI {
                 int id = Integer.valueOf(scanner.nextLine());
                 Item newItem = tracker.findById(id);
                 if (newItem != null) {
-                    System.out.println(newItem.getName() + " " + newItem.getId());
+                    System.out.println(newItem);
                 } else {
                     System.out.println("Not found");
                 }
@@ -62,7 +60,7 @@ public class StartUI {
                 Item[] items = tracker.findByName(name);
                 if (items.length != 0) {
                     for (int i = 0; i < items.length; i++) {
-                        System.out.println(items[i].getName() + " " + items[i].getId());
+                        System.out.println(items[i]);
                     }
                 } else {
                     System.out.println("Not found");
