@@ -12,6 +12,12 @@ public class CreateAction implements  UserAction {
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
         tracker.add(item);
-        return true;
+        if (tracker.findAll()[tracker.findAll().length - 1].getName().equals(name)) {
+            System.out.println("Succes");
+            return true;
+        } else {
+            System.out.println("Something's wrong");
+            return false;
+        }
     }
 }

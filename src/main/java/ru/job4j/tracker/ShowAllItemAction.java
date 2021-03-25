@@ -10,8 +10,8 @@ public class ShowAllItemAction implements UserAction {
     public boolean execute(Input input, Tracker tracker) {
         Item[] items = tracker.findAll();
         System.out.println("=== List of Items ====");
-        for (int i = 0; i < tracker.findAll().length; i++) {
-            System.out.println(items[i]);
+        for (Item a : items) {
+            System.out.println(a);
         }
         System.out.println("=== End ====");
         return true;

@@ -12,11 +12,8 @@ public class EditIteamAction implements UserAction {
         int id = input.askInt("Enter id: ");
         String name = input.askStr("Enter new name : ");
         Item newItem = new Item(id, name);
-        if (tracker.replace(id, newItem)) {
-            System.out.println("Success");
-        } else {
-            System.out.println("Error");
-        }
+        String rsl = tracker.replace(id, newItem) ? "Success" : "Something's wrong";
+        System.out.println(rsl);
         return true;
     }
 }
