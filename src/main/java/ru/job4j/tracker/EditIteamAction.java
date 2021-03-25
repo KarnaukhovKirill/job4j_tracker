@@ -15,12 +15,12 @@ public class EditIteamAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        System.out.println("=== Edit Item ====");
+        out.println("=== Edit Item ====");
         int id = input.askInt("Enter id: ");
         String name = input.askStr("Enter new name : ");
         Item newItem = new Item(id, name);
         String rsl = tracker.replace(id, newItem) ? "Success" : "Something's wrong";
-        System.out.println(rsl);
+        out.println(rsl);
         return true;
     }
 }
