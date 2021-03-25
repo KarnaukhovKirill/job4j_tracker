@@ -1,6 +1,13 @@
 package ru.job4j.tracker;
 
 public class EditIteamAction implements UserAction {
+
+    private final Output out;
+
+    public EditIteamAction(Output out) {
+        this.out = out;
+    }
+
     @Override
     public String name() {
         return "Edit item";
