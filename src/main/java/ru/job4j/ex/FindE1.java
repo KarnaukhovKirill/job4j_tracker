@@ -1,14 +1,12 @@
 package ru.job4j.ex;
 
-import java.util.Arrays;
-
 public class FindE1 {
 
     public static int indexOf(String[] value, String key) throws ElementNotFoundException {
         int rsl = -1;
-        for (String a : value) {
-            if (key.equals(a)) {
-                rsl = Arrays.asList(value).indexOf(a);
+        for (int index = 0; index < value.length; index++) {
+            if (key.equals(value[index])) {
+                rsl = index;
             }
         }
         if (rsl == -1) {
@@ -20,7 +18,7 @@ public class FindE1 {
     public static void main(String[] args) {
         try {
             String[] value = {"one", "two", "three"};
-            System.out.println(indexOf(value, "lalala"));
+            System.out.println(indexOf(value, "three"));
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
         }
