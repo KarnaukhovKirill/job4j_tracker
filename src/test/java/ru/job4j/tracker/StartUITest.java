@@ -64,7 +64,7 @@ public class StartUITest {
                 new String[] {"0", "1"}
         );
         Tracker tracker = new Tracker();
-        tracker.add(new Item("New item"));
+        Item item = tracker.add(new Item("New item"));
         UserAction[] actions = {
                 new ShowAllItemAction(output),
                 new ExitAction(output)
@@ -74,7 +74,7 @@ public class StartUITest {
                                             "0. Show all items" + ln +
                                             "1. Exit programm" + ln +
                                             "=== List of Items ===" + ln +
-                                            "Item{id=1, name='New item'}" + ln +
+                                            item.toString() + ln +
                                             " === End === " + ln +
                                             "Menu." + ln +
                                             "0. Show all items" + ln +
@@ -104,7 +104,7 @@ public class StartUITest {
     public void whenFindByName() {
         Output output = new StubOutput();
         Tracker tracker = new Tracker();
-        tracker.add(new Item("New Item"));
+        Item item = tracker.add(new Item("New Item"));
         Input input = new StubInput(
                 new String[] {"0", "New Item", "1"}
         );
@@ -118,7 +118,7 @@ public class StartUITest {
                                         "0. Find items by name" + ln +
                                         "1. Exit programm" + ln +
                                         "=== Find Item by name ====" + ln +
-                                        "Item{id=1, name='New Item'}" + ln +
+                                        item.toString() + ln +
                                         "Menu." + ln +
                                         "0. Find items by name" + ln +
                                         "1. Exit programm" + ln +
@@ -143,7 +143,7 @@ public class StartUITest {
                         "0. Find item by Id" + ln +
                         "1. Exit programm" + ln +
                         "=== Find Item by Id ====" + ln +
-                        "Finder item" + ln +
+                        item.toString() + ln +
                         "Menu." + ln +
                         "0. Find item by Id" + ln +
                         "1. Exit programm" + ln +
