@@ -27,4 +27,14 @@ public class PhoneDictionaryTest {
         ArrayList<Person> persons = phones.find("angel");
         assertThat(persons.get(0).getAddress(), is("Arhangelsk"));
     }
+
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void whenFindByNameThree() {
+        PhoneDictionary phones = new PhoneDictionary();
+        phones.add(
+                new Person("Kirill", "Karnaukhov", "88005553535", "Arhangelsk")
+        );
+        ArrayList<Person> persons = phones.find("lol");
+        assertThat(persons.get(0).getAddress(), is("Arhangelsk"));
+    }
 }
