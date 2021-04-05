@@ -18,6 +18,8 @@ public class PriorityQueueTest {
         result = queue.take();
         assertThat(result.getDesc(), is("middle"));
         result = queue.take();
+        assertThat(result.getDesc(), is("low"));
+        result = queue.take();
         assertThat(result.getDesc(), is("lowlow"));
     }
 }
