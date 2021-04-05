@@ -5,6 +5,8 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.IsNull.nullValue;
 import org.junit.Test;
 
+import java.util.List;
+
 public class TrackerTest {
 
     @Test
@@ -55,8 +57,8 @@ public class TrackerTest {
         tracker.add(s);
         tracker.add(t);
         tracker.delete(2);
-        Item[] items = tracker.findAll();
-        assertThat(items[0].getName(), is(f.getName()));  //удалили Yahoo, остались items[0] = Google, items[1] = Amazoon
-        assertThat(items[1].getName(), is(t.getName()));
+        List<Item> items = tracker.findAll();
+        assertThat(items.get(0).getName(), is(f.getName()));  //удалили Yahoo, остались items[0] = Google, items[1] = Amazoon
+        assertThat(items.get(1).getName(), is(t.getName()));
         }
 }
