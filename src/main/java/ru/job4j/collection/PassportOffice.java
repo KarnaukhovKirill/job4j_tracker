@@ -11,7 +11,7 @@ public class PassportOffice {
         if (!rsl) {
             citizens.put(citizen.getPassport(), citizen);
         }
-        return rsl;
+        return !rsl;
     }
 
     public Citizen get(String passport) {
