@@ -19,9 +19,12 @@ public class ItemTest {
                 new Item(2, "Danil")
         );
         Collections.sort(items);
-        assertThat(items.toString(), is("[Item{id=1, name='Kirill'}, " +
-                                            "Item{id=2, name='Danil'}, " +
-                                            "Item{id=3, name='Stas'}]"));
+        List<Item> expected = Arrays.asList(
+                new Item(1, "Kirill"),
+                new Item(2, "Danil"),
+                new Item(3, "Stas")
+        );
+        assertThat(items, is(expected));
     }
 
     @Test
@@ -32,9 +35,12 @@ public class ItemTest {
                 new Item(2, "Danil")
         );
         Collections.sort(items, Collections.reverseOrder());
-        assertThat(items.toString(), is("[Item{id=3, name='Stas'}, " +
-                                            "Item{id=2, name='Danil'}, " +
-                                            "Item{id=1, name='Kirill'}]"));
+        List<Item> expected = Arrays.asList(
+                new Item(3, "Stas"),
+                new Item(2, "Danil"),
+                new Item(1, "Kirill")
+        );
+        assertThat(items, is(expected));
     }
 
     @Test
@@ -45,9 +51,12 @@ public class ItemTest {
                 new Item(2, "Danil")
         );
         Collections.sort(items, new SortItemByName());
-        assertThat(items.toString(), is("[Item{id=2, name='Danil'}, " +
-                                            "Item{id=1, name='Kirill'}, " +
-                                            "Item{id=3, name='Stas'}]"));
+        List<Item> expected = Arrays.asList(
+                new Item(2, "Danil"),
+                new Item(1, "Kirill"),
+                new Item(3, "Stas")
+        );
+        assertThat(items, is(expected));
     }
 
     @Test
@@ -58,8 +67,11 @@ public class ItemTest {
                 new Item(2, "Adriano Celentano")
         );
         Collections.sort(items, new SortItemByNameReverse());
-        assertThat(items.toString(), is("[Item{id=2, name='Adriano Celentano'}, " +
-                                                "Item{id=3, name='Ace of Base'}, " +
-                                                "Item{id=1, name='ABBA'}]"));
+        List<Item> expected = Arrays.asList(
+                new Item(2, "Adriano Celentano"),
+                new Item(3, "Ace of Base"),
+                new Item(1, "ABBA")
+        );
+        assertThat(items, is(expected));
     }
 }
