@@ -5,7 +5,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-public class TriangleTest{
+public class TriangleTest {
 
     @Test
     public void area8() {

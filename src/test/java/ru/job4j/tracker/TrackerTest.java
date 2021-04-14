@@ -58,7 +58,7 @@ public class TrackerTest {
         tracker.add(t);
         tracker.delete(2);
         List<Item> items = tracker.findAll();
-        assertThat(items.get(0).getName(), is(f.getName()));  //удалили Yahoo, остались items[0] = Google, items[1] = Amazoon
+        assertThat(items.get(0).getName(), is(f.getName()));
         assertThat(items.get(1).getName(), is(t.getName()));
         }
 }

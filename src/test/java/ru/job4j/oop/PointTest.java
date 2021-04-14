@@ -4,7 +4,6 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.closeTo;
 import static org.junit.Assert.assertThat;
 
-
 public class PointTest {
 
     @Test
