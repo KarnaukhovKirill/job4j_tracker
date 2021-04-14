@@ -15,7 +15,7 @@ after_success:
 notifications:
   email:
     recipients:
-      -kirya2361@gmail.com
+      - pound.of.uranium@gmail.com
     on_success: never # default: change
     on_failure: always # default: always
 
