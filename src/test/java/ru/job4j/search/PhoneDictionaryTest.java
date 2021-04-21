@@ -37,4 +37,14 @@ public class PhoneDictionaryTest {
         ArrayList<Person> persons = phones.find("lol");
         assertThat(persons.size(), is(0));
     }
+
+    @Test
+    public void whenFindByNameWithPredicate() {
+        PhoneDictionary phones = new PhoneDictionary();
+        phones.add(
+                new Person("Andrei", "Kulebyaka", "5556512", "Zlotoust")
+        );
+        ArrayList<Person> persons = phones.find("Andrei");
+        assertThat(persons.get(0).getSurname(), is("Kulebyaka"));
+    }
 }
