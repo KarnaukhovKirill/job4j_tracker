@@ -2,13 +2,18 @@ package ru.job4j.stream;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StreamUsage01 {
     public static void main(String[] args) {
-        List<Integer> list = List.of(1, 2, 3, 4, 5, 6, 7, 8, -2, 0);
-        List<Integer> filterList = list.stream().filter(
-                integer -> integer % 2 == 0 && integer > 0
-        ).collect(Collectors.toList());
-        filterList.forEach(System.out::println);
+        System.out.println("Hello, wrld!");
+    }
+
+    public List<Integer> matrixToList(Integer[][] integers) {
+        List<Integer> newList;
+        newList = Stream.of(integers)
+                .flatMap(Stream::of)
+                .collect(Collectors.toList());
+        return newList;
     }
 }
