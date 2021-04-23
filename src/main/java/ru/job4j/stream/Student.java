@@ -12,6 +12,10 @@ public class Student {
         this.surname = surname;
     }
 
+    public Student(Student other) {
+        this(other.getScore(), other.getSurname());
+    }
+
     public int getScore() {
         return score;
     }
@@ -44,5 +48,10 @@ public class Student {
         Student student = (Student) o;
         return score == student.score
                 && Objects.equals(surname, student.surname);
+    }
+
+    @Override
+    public String toString() {
+        return " OBJ - " + this.getSurname().toUpperCase();
     }
 }
