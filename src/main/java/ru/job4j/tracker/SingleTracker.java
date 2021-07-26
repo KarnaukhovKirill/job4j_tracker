@@ -6,7 +6,7 @@ public final class SingleTracker {
 
     private static SingleTracker singleTracker = null;
 
-    private Tracker tracker = new Tracker();
+    private MemTracker memTracker = new MemTracker();
 
     private SingleTracker() {
     }
@@ -19,22 +19,22 @@ public final class SingleTracker {
     }
 
     public Item add(Item item) {
-        return tracker.add(item);
+        return memTracker.add(item);
     }
 
     public boolean replace(int id, Item item) {
-        return tracker.replace(id, item);
+        return memTracker.replace(id, item);
     }
 
     public boolean delete(int id) {
-        return tracker.delete(id);
+        return memTracker.delete(id);
     }
 
     public List<Item> findAll() {
-        return tracker.findAll();
+        return memTracker.findAll();
     }
 
     public Item findById(int id) {
-        return tracker.findById(id);
+        return memTracker.findById(id);
     }
 }
