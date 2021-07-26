@@ -7,57 +7,57 @@ import org.junit.Test;
 
 import java.util.List;
 
-public class TrackerTest {
+public class MemTrackerTest {
 
     @Test
     public void whenReplace() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item bug = new Item();
         bug.setName("Bug");
-        tracker.add(bug);
+        memTracker.add(bug);
         int id = bug.getId();
         Item bugWithDesc = new Item();
         bugWithDesc.setName("Bug with description");
-        tracker.replace(id, bugWithDesc);
-        assertThat(tracker.findById(id).getName(), is("Bug with description"));
+        memTracker.replace(id, bugWithDesc);
+        assertThat(memTracker.findById(id).getName(), is("Bug with description"));
     }
 
     @Test
     public void whenReplaceId() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item bug = new Item();
         bug.setName("Bug");
-        tracker.add(bug);
+        memTracker.add(bug);
         bug.setId(50);
         int id = bug.getId();
         Item bugWithDesc = new Item();
         bugWithDesc.setName("Bug with description");
-        tracker.replace(id, bugWithDesc);
-        assertThat(tracker.findById(id).getName(), is("Bug with description"));
+        memTracker.replace(id, bugWithDesc);
+        assertThat(memTracker.findById(id).getName(), is("Bug with description"));
     }
 
     @Test
     public void whenDelete() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item bug = new Item();
         bug.setName("Bug");
-        tracker.add(bug);
+        memTracker.add(bug);
         int id = bug.getId();
-        tracker.delete(id);
-        assertThat(tracker.findById(id), is(nullValue()));
+        memTracker.delete(id);
+        assertThat(memTracker.findById(id), is(nullValue()));
     }
 
     @Test
     public void whenDeleteTwo() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item f = new Item(1, "Google");
         Item s = new Item(2, "Yahoo");
         Item t = new Item(3, "Amazoon");
-        tracker.add(f);
-        tracker.add(s);
-        tracker.add(t);
-        tracker.delete(2);
-        List<Item> items = tracker.findAll();
+        memTracker.add(f);
+        memTracker.add(s);
+        memTracker.add(t);
+        memTracker.delete(2);
+        List<Item> items = memTracker.findAll();
         assertThat(items.get(0).getName(), is(f.getName()));
         assertThat(items.get(1).getName(), is(t.getName()));
         }
