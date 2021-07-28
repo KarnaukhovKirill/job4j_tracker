@@ -117,7 +117,7 @@ public class SqlTracker implements Store {
                      cn.prepareStatement("select * from items where id = ?")) {
             statement.setInt(1, id);
             try (var resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
+                if (resultSet.next()) {
                     item = new Item(resultSet.getInt(1),
                                     resultSet.getString(2),
                                     resultSet.getTimestamp(3).toLocalDateTime());
