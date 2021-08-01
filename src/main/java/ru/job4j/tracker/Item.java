@@ -80,7 +80,8 @@ public class Item implements Comparable<Item> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        int first = 31 * created.hashCode();
+        return first * Objects.hash(name);
     }
 
     @Override
