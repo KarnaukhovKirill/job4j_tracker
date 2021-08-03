@@ -35,7 +35,8 @@ public class DepartmentsTest {
     public void testMethodSortDesc() {
         List<String> input = List.of("k2", "k2/sk1/ssk1", "k1", "k2/sk1", "k2/sk1/ssk2");
         List<String> expect = List.of("k2", "k2/sk1", "k2/sk1/ssk1", "k2/sk1/ssk2", "k1");
-        Departments.sortDesc(input);
-        assertThat(input, is(expect));
+        List<String> result = Departments.fillGaps(input);
+        Departments.sortDesc(result);
+        assertThat(result, is(expect));
     }
 }
