@@ -4,7 +4,6 @@ import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.IsNull.nullValue;
 import org.junit.Test;
-
 import java.util.List;
 
 public class MemTrackerTest {
@@ -60,5 +59,5 @@ public class MemTrackerTest {
         List<Item> items = memTracker.findAll();
         assertThat(items.get(0).getName(), is(f.getName()));
         assertThat(items.get(1).getName(), is(t.getName()));
-        }
+    }
 }
