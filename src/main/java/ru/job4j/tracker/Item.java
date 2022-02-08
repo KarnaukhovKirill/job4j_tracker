@@ -1,7 +1,7 @@
 package ru.job4j.tracker;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
@@ -14,7 +14,8 @@ public class Item implements Comparable<Item> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private LocalDateTime created = LocalDateTime.now();
+    private String description;
+    private Timestamp created;
 
     public Item() {
     }
@@ -32,10 +33,16 @@ public class Item implements Comparable<Item> {
         this.name = name;
     }
 
-    public Item(int id, String name, LocalDateTime localDateTime) {
+    public Item(int id, String name, Timestamp created) {
         this.id = id;
         this.name = name;
-        this.created = localDateTime;
+        this.created = created;
+    }
+
+    public Item(String name, String description, Timestamp created) {
+        this.name = name;
+        this.description = description;
+        this.created = created;
     }
 
     public int getId() {
@@ -58,17 +65,26 @@ public class Item implements Comparable<Item> {
         return FORMATTER;
     }
 
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
+    public String getDescription() {
+        return description;
     }
 
-    public LocalDateTime getCreated() {
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Timestamp getCreated() {
         return created;
+    }
+
+    public void setCreated(Timestamp created) {
+        this.created = created;
     }
 
     @Override
     public String toString() {
-        return String.format("id: %s, name: %s, created: %s", id, name, FORMATTER.format(created));
+        return String.format("id: %s, name: %s, created: %s", id, name,
+                FORMATTER.format(created.toLocalDateTime()));
     }
 
     @Override
