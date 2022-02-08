@@ -38,7 +38,7 @@ public class SqlTracker implements Store {
                                                                            + "values (?, ?)",
                                                                 Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getName());
-            var timestamp = Timestamp.valueOf(item.getCreated());
+            var timestamp = item.getCreated();
             statement.setTimestamp(2, timestamp);
             statement.execute();
             var keys = statement.getGeneratedKeys();
@@ -57,7 +57,7 @@ public class SqlTracker implements Store {
         try (var statement =
                      cn.prepareStatement("update items set name = ?, created = ? where id = ?")) {
             statement.setString(1, item.getName());
-            var timestamp = Timestamp.valueOf(item.getCreated());
+            var timestamp = item.getCreated();
             statement.setTimestamp(2, timestamp);
             statement.setInt(3, id);
             rsl = statement.executeUpdate() > 0;
@@ -89,7 +89,7 @@ public class SqlTracker implements Store {
                 while (resultSet.next()) {
                     itemList.add(new Item(resultSet.getInt(1),
                                         resultSet.getString(2),
-                                        resultSet.getTimestamp(3).toLocalDateTime()));
+                                        resultSet.getTimestamp(3)));
                 }
             }
         } catch (Exception e) {
@@ -108,7 +108,7 @@ public class SqlTracker implements Store {
                 while (resultSet.next()) {
                     itemList.add(new Item(resultSet.getInt(1),
                                         resultSet.getString(2),
-                                        resultSet.getTimestamp(3).toLocalDateTime()));
+                                        resultSet.getTimestamp(3)));
                 }
             }
         } catch (Exception e) {
@@ -127,7 +127,7 @@ public class SqlTracker implements Store {
                 if (resultSet.next()) {
                     item = new Item(resultSet.getInt(1),
                                     resultSet.getString(2),
-                                    resultSet.getTimestamp(3).toLocalDateTime());
+                                    resultSet.getTimestamp(3));
                 }
             }
         } catch (Exception e) {

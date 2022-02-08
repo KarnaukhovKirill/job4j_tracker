@@ -81,7 +81,8 @@ public class MockitoTests {
         when(input.askInt(any(String.class))).thenReturn(item.getId());
         find.execute(input, tracker);
         assertThat(output.toString(), is("=== Find Item by Id ===" + ln
-                + "id: 1, name: new Item, created: " + FORMATTER.format(item.getCreated()) + ln));
+                + "id: 1, name: new Item, created: "
+                + FORMATTER.format(item.getCreated().toLocalDateTime()) + ln));
     }
 
     @Test
@@ -111,7 +112,8 @@ public class MockitoTests {
         when(input.askStr(any(String.class))).thenReturn(item.getName());
         find.execute(input, tracker);
         assertThat(output.toString(), is("=== Find Item by name ===" + ln
-                + "id: 1, name: new Item, created: " + FORMATTER.format(item.getCreated()) + ln));
+                + "id: 1, name: new Item, created: "
+                + FORMATTER.format(item.getCreated().toLocalDateTime()) + ln));
     }
 
     @Test

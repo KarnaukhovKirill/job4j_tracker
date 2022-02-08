@@ -1,7 +1,10 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
+
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.Matchers.nullValue;
@@ -63,7 +66,8 @@ public class StartUITest {
                 new String[] {"0", "1"}
         );
         MemTracker memTracker = new MemTracker();
-        Item item = memTracker.add(new Item("New item"));
+        Item item = memTracker.add(new Item("New item", "Desc",
+                new Timestamp(new Date().getTime())));
         List<UserAction> actions = new ArrayList<>();
         actions.add(new ShowAllItemAction(output));
         actions.add(new ExitAction(output));
@@ -101,7 +105,8 @@ public class StartUITest {
     public void whenFindByName() {
         Output output = new StubOutput();
         MemTracker memTracker = new MemTracker();
-        Item item = memTracker.add(new Item("New Item"));
+        Item item = memTracker.add(new Item("New Item", "desc",
+                new Timestamp(new Date().getTime())));
         Input input = new StubInput(
                 new String[] {"0", "New Item", "1"}
         );
@@ -125,7 +130,8 @@ public class StartUITest {
     public void whenFindById() {
         Output output = new StubOutput();
         MemTracker memTracker = new MemTracker();
-        Item item = memTracker.add(new Item("Finder item"));
+        Item item = memTracker.add(new Item("Finder item", "Finder description",
+                new Timestamp(new Date().getTime())));
         Input input = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
         );
