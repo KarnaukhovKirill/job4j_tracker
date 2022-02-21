@@ -45,6 +45,12 @@ public class Item implements Comparable<Item> {
         this.created = created;
     }
 
+    public Item(String name, String description) {
+        this.name = name;
+        this.description = description;
+        this.created = new Timestamp(System.currentTimeMillis());
+    }
+
     public int getId() {
         return id;
     }
