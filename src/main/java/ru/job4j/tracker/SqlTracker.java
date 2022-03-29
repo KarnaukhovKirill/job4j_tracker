@@ -99,6 +99,21 @@ public class SqlTracker implements Store {
     }
 
     @Override
+    public void findAll(Observe<Item> observe) {
+        try (var statement = cn.prepareStatement("select * from items")) {
+            try (var resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    observe.recieve(new Item(resultSet.getInt(1),
+                            resultSet.getString(2),
+                            resultSet.getTimestamp(3)));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public List<Item> findByName(String key) {
         List<Item> itemList = new ArrayList<>();
         try (var statement =

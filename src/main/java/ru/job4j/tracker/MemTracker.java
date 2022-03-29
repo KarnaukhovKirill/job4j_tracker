@@ -36,6 +36,11 @@ public class MemTracker implements Store {
         return new ArrayList<>(items);
     }
 
+    @Override
+    public void findAll(Observe<Item> observe) {
+        items.forEach(observe::recieve);
+    }
+
     public List<Item> findByName(String key) {
         List<Item> copy = new ArrayList<>();
         for (Item i : items) {
