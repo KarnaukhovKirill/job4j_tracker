@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package ru.job4j.config;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -7,9 +7,8 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
-public class HibernateScheme {
+public class HbmRun {
     public static void main(String[] args) {
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure().build();
@@ -20,10 +19,8 @@ public class HibernateScheme {
             Session session = sf.openSession();
             session.beginTransaction();
 
-            Item item = new Item();
-            item.setName("Item");
-            item.setDescription("Description");
-            session.save(item);
+            Car car = Car.of("Toyota", new Timestamp(1459510232000L), "Karnaukhov Kirill");
+            session.save(car);
 
             session.getTransaction().commit();
             session.close();

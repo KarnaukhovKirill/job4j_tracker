@@ -19,7 +19,7 @@ public class StartUITest {
     public void whenCreateItem() {
         Output output = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", "Item name", "1"}
+                new String[] {"0", "Item name", "Description", "1"}
         );
         MemTracker memTracker = new MemTracker();
         List<UserAction> actions = new ArrayList<>();
@@ -33,7 +33,9 @@ public class StartUITest {
     public void whenDeleteItem() {
         Output output = new StubOutput();
         MemTracker memTracker = new MemTracker();
-        Item item = memTracker.add(new Item("Deleted item"));
+        Item deleteItem = new Item();
+        deleteItem.setName("Deleted item");
+        Item item = memTracker.add(deleteItem);
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
         );
@@ -48,9 +50,12 @@ public class StartUITest {
     public void whenReplaceItem() {
         Output output = new StubOutput();
         MemTracker memTracker = new MemTracker();
-        Item item = memTracker.add(new Item("Replaced item"));
+        Item replaceItem = new Item();
+        replaceItem.setName("Replaced item");
+        Item item = memTracker.add(replaceItem);
         Input in = new StubInput(
-                new String[] {"0", String.valueOf(item.getId()), "New item name", "1"}
+                new String[] {"0", String.valueOf(item.getId()),
+                        "New item name", "new Description", "1"}
         );
         List<UserAction> actions = new ArrayList<>();
         actions.add(new EditIteamAction(output));
@@ -66,8 +71,7 @@ public class StartUITest {
                 new String[] {"0", "1"}
         );
         MemTracker memTracker = new MemTracker();
-        Item item = memTracker.add(new Item("New item", "Desc",
-                new Timestamp(new Date().getTime())));
+        Item item = memTracker.add(new Item("New item", "Desc"));
         List<UserAction> actions = new ArrayList<>();
         actions.add(new ShowAllItemAction(output));
         actions.add(new ExitAction(output));
@@ -105,8 +109,7 @@ public class StartUITest {
     public void whenFindByName() {
         Output output = new StubOutput();
         MemTracker memTracker = new MemTracker();
-        Item item = memTracker.add(new Item("New Item", "desc",
-                new Timestamp(new Date().getTime())));
+        Item item = memTracker.add(new Item("New Item", "desc"));
         Input input = new StubInput(
                 new String[] {"0", "New Item", "1"}
         );
@@ -130,8 +133,7 @@ public class StartUITest {
     public void whenFindById() {
         Output output = new StubOutput();
         MemTracker memTracker = new MemTracker();
-        Item item = memTracker.add(new Item("Finder item", "Finder description",
-                new Timestamp(new Date().getTime())));
+        Item item = memTracker.add(new Item("Finder item", "Finder description"));
         Input input = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
         );

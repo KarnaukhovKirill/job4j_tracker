@@ -54,9 +54,11 @@ public class SqlTrackerTest {
     @Test
     public void whenReplaceAndFindByIdIsTrue() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item item = new Item("item");
+        Item item = new Item();
+        item.setName("item");
         tracker.add(item);
-        Item newItem = new Item("Second");
+        Item newItem = new Item();
+        newItem.setName("Second");
         tracker.replace(item.getId(), newItem);
         assertThat(tracker.findById(item.getId()), is(newItem));
     }
@@ -64,7 +66,8 @@ public class SqlTrackerTest {
     @Test
     public void whenSaveItemAndFindByGeneratedIdThenMustBeTheSame() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item item = new Item("item");
+        Item item = new Item();
+        item.setName("item");
         tracker.add(item);
         assertThat(tracker.findById(item.getId()), is(item));
     }
@@ -72,7 +75,8 @@ public class SqlTrackerTest {
     @Test
     public void whenAddItemAndFindByNameIsTrue() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item item = new Item("item");
+        Item item = new Item();
+        item.setName("item");
         tracker.add(item);
         assertThat(tracker.findByName("item").get(0), is(item));
     }
@@ -80,8 +84,10 @@ public class SqlTrackerTest {
     @Test
     public void whenAddTwoItemAndDeleteFirst() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item item = new Item("item");
-        Item secondItem = new Item("Second");
+        Item item = new Item();
+        item.setName("item");
+        Item secondItem = new Item();
+        secondItem.setName("Second");
         tracker.add(item);
         tracker.add(secondItem);
         tracker.delete(item.getId());
@@ -91,7 +97,8 @@ public class SqlTrackerTest {
     @Test
     public void whenCheckDeletedItem() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item item = new Item("item");
+        Item item = new Item();
+        item.setName("item");
         tracker.add(item);
         tracker.delete(item.getId());
         assertNull(tracker.findById(item.getId()));
@@ -100,8 +107,10 @@ public class SqlTrackerTest {
     @Test
     public void whenFindAllIsTrue() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item item = new Item("item");
-        Item secondItem = new Item("Second");
+        Item item = new Item();
+        item.setName("item");
+        Item secondItem = new Item();
+        secondItem.setName("Second");
         tracker.add(item);
         tracker.add(secondItem);
         var expected = List.of(item, secondItem);
@@ -111,7 +120,8 @@ public class SqlTrackerTest {
     @Test
     public void whenResultIsNull() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item item = new Item("item");
+        Item item = new Item();
+        item.setName("item");
         tracker.add(item);
         assertNull(tracker.findById(100500));
     }

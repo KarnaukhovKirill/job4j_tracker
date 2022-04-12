@@ -49,9 +49,9 @@ public class MemTrackerTest {
     @Test
     public void whenDeleteTwo() {
         MemTracker memTracker = new MemTracker();
-        Item f = new Item(1, "Google");
-        Item s = new Item(2, "Yahoo");
-        Item t = new Item(3, "Amazoon");
+        Item f = new Item(1, "Google", "desc");
+        Item s = new Item(2, "Yahoo", "desc");
+        Item t = new Item(3, "Amazoon", "desc");
         memTracker.add(f);
         memTracker.add(s);
         memTracker.add(t);

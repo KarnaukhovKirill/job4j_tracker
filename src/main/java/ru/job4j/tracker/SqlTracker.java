@@ -87,9 +87,11 @@ public class SqlTracker implements Store {
         try (var statement = cn.prepareStatement("select * from items")) {
             try (var resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    itemList.add(new Item(resultSet.getInt(1),
-                                        resultSet.getString(2),
-                                        resultSet.getTimestamp(3)));
+                    Item item = new Item();
+                    item.setId(resultSet.getInt(1));
+                    item.setName(resultSet.getString(2));
+                    item.setDescription(resultSet.getString(3));
+                    itemList.add(item);
                 }
             }
         } catch (Exception e) {
@@ -103,9 +105,11 @@ public class SqlTracker implements Store {
         try (var statement = cn.prepareStatement("select * from items")) {
             try (var resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    observe.recieve(new Item(resultSet.getInt(1),
-                            resultSet.getString(2),
-                            resultSet.getTimestamp(3)));
+                    Item item = new Item();
+                    item.setId(resultSet.getInt(1));
+                    item.setName(resultSet.getString(2));
+                    item.setDescription(resultSet.getString(3));
+                    observe.recieve(item);
                 }
             }
         } catch (Exception e) {
@@ -121,9 +125,11 @@ public class SqlTracker implements Store {
             statement.setString(1, key);
             try (var resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    itemList.add(new Item(resultSet.getInt(1),
-                                        resultSet.getString(2),
-                                        resultSet.getTimestamp(3)));
+                    Item item = new Item();
+                    item.setId(resultSet.getInt(1));
+                    item.setName(resultSet.getString(2));
+                    item.setDescription(resultSet.getString(3));
+                    itemList.add(item);
                 }
             }
         } catch (Exception e) {
@@ -140,9 +146,10 @@ public class SqlTracker implements Store {
             statement.setInt(1, id);
             try (var resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    item = new Item(resultSet.getInt(1),
-                                    resultSet.getString(2),
-                                    resultSet.getTimestamp(3));
+                    item = new Item();
+                    item.setId(resultSet.getInt(1));
+                    item.setName(resultSet.getString(2));
+                    item.setDescription(resultSet.getString(3));
                 }
             }
         } catch (Exception e) {

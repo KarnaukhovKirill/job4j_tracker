@@ -14,15 +14,15 @@ public class ItemTest {
     @Test
     public void testSortByIdDownToUp() {
         List<Item> items = Arrays.asList(
-                new Item(1, "Kirill"),
-                new Item(3, "Stas"),
-                new Item(2, "Danil")
+                new Item(1, "Kirill", "desc"),
+                new Item(3, "Stas", "desc"),
+                new Item(2, "Danil", "desc")
         );
         Collections.sort(items);
         List<Item> expected = Arrays.asList(
-                new Item(1, "Kirill"),
-                new Item(2, "Danil"),
-                new Item(3, "Stas")
+                new Item(1, "Kirill", "desc"),
+                new Item(2, "Danil", "desc"),
+                new Item(3, "Stas", "desc")
         );
         assertThat(items, is(expected));
     }
@@ -30,15 +30,15 @@ public class ItemTest {
     @Test
     public void testSortByIdUpToDown() {
         List<Item> items = Arrays.asList(
-                new Item(1, "Kirill"),
-                new Item(3, "Stas"),
-                new Item(2, "Danil")
+                new Item(1, "Kirill", "desc"),
+                new Item(3, "Stas", "desc"),
+                new Item(2, "Danil", "desc")
         );
         Collections.sort(items, Collections.reverseOrder());
         List<Item> expected = Arrays.asList(
-                new Item(3, "Stas"),
-                new Item(2, "Danil"),
-                new Item(1, "Kirill")
+                new Item(3, "Stas", "desc"),
+                new Item(2, "Danil", "desc"),
+                new Item(1, "Kirill", "desc")
         );
         assertThat(items, is(expected));
     }
@@ -46,15 +46,15 @@ public class ItemTest {
     @Test
     public void testSortByNameDownToUp() {
         List<Item> items = Arrays.asList(
-                new Item(1, "Kirill"),
-                new Item(3, "Stas"),
-                new Item(2, "Danil")
+                new Item(1, "Kirill", "desc"),
+                new Item(3, "Stas", "desc"),
+                new Item(2, "Danil", "desc")
         );
         Collections.sort(items, new SortItemByName());
         List<Item> expected = Arrays.asList(
-                new Item(2, "Danil"),
-                new Item(1, "Kirill"),
-                new Item(3, "Stas")
+                new Item(2, "Danil", "desc"),
+                new Item(1, "Kirill", "desc"),
+                new Item(3, "Stas", "desc")
         );
         assertThat(items, is(expected));
     }
@@ -62,15 +62,15 @@ public class ItemTest {
     @Test
     public void testSortByNameUpToDown() {
         List<Item> items = Arrays.asList(
-                new Item(1, "ABBA"),
-                new Item(3, "Ace of Base"),
-                new Item(2, "Adriano Celentano")
+                new Item(1, "ABBA", "desc"),
+                new Item(3, "Ace of Base", "desc"),
+                new Item(2, "Adriano Celentano", "desc")
         );
         Collections.sort(items, new SortItemByNameReverse());
         List<Item> expected = Arrays.asList(
-                new Item(2, "Adriano Celentano"),
-                new Item(3, "Ace of Base"),
-                new Item(1, "ABBA")
+                new Item(2, "Adriano Celentano", "desc"),
+                new Item(3, "Ace of Base", "desc"),
+                new Item(1, "ABBA", "desc")
         );
         assertThat(items, is(expected));
     }

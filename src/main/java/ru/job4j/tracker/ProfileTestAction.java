@@ -18,7 +18,8 @@ public class ProfileTestAction implements UserAction {
     public boolean execute(Input input, Store tracker) {
         Random random = new Random();
         for (int i = 0; i < 50000; i++) {
-            Item item = new Item("Item" + i);
+            Item item = new Item();
+            item.setName("Item " + i);
             tracker.add(item);
             if (random.nextInt(50000) < i) {
                 var number = random.nextInt(i);

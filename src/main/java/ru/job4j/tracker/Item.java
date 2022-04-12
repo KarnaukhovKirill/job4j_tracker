@@ -15,40 +15,20 @@ public class Item implements Comparable<Item> {
     private int id;
     private String name;
     private String description;
-    private Timestamp created;
+    private Timestamp created = new Timestamp(System.currentTimeMillis());
 
     public Item() {
-    }
-
-    public Item(String  name) {
-        this.name = name;
-    }
-
-    public Item(int id) {
-        this.id = id;
-    }
-
-    public Item(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Item(int id, String name, Timestamp created) {
-        this.id = id;
-        this.name = name;
-        this.created = created;
-    }
-
-    public Item(String name, String description, Timestamp created) {
-        this.name = name;
-        this.description = description;
-        this.created = created;
     }
 
     public Item(String name, String description) {
         this.name = name;
         this.description = description;
-        this.created = new Timestamp(System.currentTimeMillis());
+    }
+
+    public Item(int id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
     }
 
     public int getId() {
@@ -89,8 +69,8 @@ public class Item implements Comparable<Item> {
 
     @Override
     public String toString() {
-        return String.format("id: %s, name: %s, created: %s", id, name,
-                FORMATTER.format(created.toLocalDateTime()));
+        return String.format("id: %s, name: %s, description: %s, created: %s",
+                id, name, description, FORMATTER.format(created.toLocalDateTime()));
     }
 
     @Override

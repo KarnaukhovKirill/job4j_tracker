@@ -18,7 +18,10 @@ public class EditIteamAction implements UserAction {
         out.println("=== Edit Item ===");
         int id = input.askInt("Enter id: ");
         String name = input.askStr("Enter new name : ");
-        Item newItem = new Item(id, name);
+        String description = input.askStr("Enter description");
+        Item newItem = new Item();
+        newItem.setName(name);
+        newItem.setDescription(description);
         String rsl = tracker.replace(id, newItem) ? "Success" : "Something's wrong";
         out.println(rsl);
         return true;

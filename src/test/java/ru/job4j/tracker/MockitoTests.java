@@ -15,7 +15,9 @@ public class MockitoTests {
     public void whenEdit() {
         Output output = new StubOutput();
         Store tracker = new MemTracker();
-        tracker.add(new Item("Replace item"));
+        Item item = new Item();
+        item.setName("Replace item");
+        tracker.add(item);
         String replaceName = "New item name";
         EditIteamAction edit = new EditIteamAction(output);
         Input input = mock(Input.class);
@@ -31,7 +33,9 @@ public class MockitoTests {
     public void whenEditIsFalse() {
         Output output = new StubOutput();
         Store tracker = new MemTracker();
-        tracker.add(new Item("Replace item"));
+        Item item = new Item();
+        item.setName("Replace item");
+        tracker.add(item);
         String replaceName = "New item name";
         EditIteamAction edit = new EditIteamAction(output);
         Input input = mock(Input.class);
@@ -46,7 +50,9 @@ public class MockitoTests {
     public void whenDelete() {
         Output output = new StubOutput();
         Store tracker = new MemTracker();
-        tracker.add(new Item("new Item"));
+        Item item = new Item();
+        item.setName("new Item");
+        tracker.add(item);
         DeleteAction delAction = new DeleteAction(output);
         Input input = mock(Input.class);
         when(input.askInt(any(String.class))).thenReturn(1);
@@ -59,7 +65,8 @@ public class MockitoTests {
     public void whenDeleteIsFalse() {
         Output output = new StubOutput();
         Store tracker = new MemTracker();
-        var item = new Item("new Item");
+        Item item = new Item();
+        item.setName("new Item");
         tracker.add(item);
         DeleteAction delAction = new DeleteAction(output);
         Input input = mock(Input.class);
@@ -73,7 +80,8 @@ public class MockitoTests {
     public void whenFindById() {
         Output output = new StubOutput();
         Store tracker = new MemTracker();
-        var item = new Item("new Item");
+        Item item = new Item();
+        item.setName("new Item");
         tracker.add(item);
         FindByIdAction find = new FindByIdAction(output);
         Input input = mock(Input.class);
@@ -89,7 +97,8 @@ public class MockitoTests {
     public void whenFindByIdIsFalse() {
         Output output = new StubOutput();
         Store tracker = new MemTracker();
-        var item = new Item("new Item");
+        Item item = new Item();
+        item.setName("new Item");
         tracker.add(item);
         FindByIdAction find = new FindByIdAction(output);
         Input input = mock(Input.class);
@@ -104,7 +113,8 @@ public class MockitoTests {
     public void whenFindByName() {
         Output output = new StubOutput();
         Store tracker = new MemTracker();
-        var item = new Item("new Item");
+        Item item = new Item();
+        item.setName("new Item");
         tracker.add(item);
         FindByNameAction find = new FindByNameAction(output);
         Input input = mock(Input.class);
@@ -120,7 +130,8 @@ public class MockitoTests {
     public void whenFindByNameIsFalse() {
         Output output = new StubOutput();
         Store tracker = new MemTracker();
-        var item = new Item("new Item");
+        Item item = new Item();
+        item.setName("new Item");
         tracker.add(item);
         FindByNameAction find = new FindByNameAction(output);
         Input input = mock(Input.class);
